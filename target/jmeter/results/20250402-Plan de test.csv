@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1743586762330,1615,jp@gc - WebDriver Sampler,200,OK,Thread Group 1-1,text,true,,16766,0,1,1,https://www.saucedemo.com/inventory.html,0,0,0
+1743586763974,459,jp@gc - WebDriver Sampler,200,OK,Thread Group 1-1,text,true,,16766,0,1,1,https://www.saucedemo.com/inventory.html,0,0,0
