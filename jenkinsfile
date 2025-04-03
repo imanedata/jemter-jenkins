@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Install Dependencies') {
             agent {
@@ -7,7 +8,6 @@ pipeline {
                     image 'maven:3.8.6-openjdk-11'
                 }
             }
-            stage('Install Dependencies') {
             steps {
                 sh 'mvn clean install -DskipTests'
             }
@@ -17,9 +17,7 @@ pipeline {
             steps {
                 sh 'mvn clean compile'
                 sh 'mvn jmeter:jmeter'
-                
             }
         }
     }
-}
 }
