@@ -54,7 +54,7 @@ WDS.browser.get(&apos;http://192.168.1.95:3000/&apos;)
         <intProp name="WebDriverConfig.socks_port">8080</intProp>
         <stringProp name="WebDriverConfig.no_proxy">localhost</stringProp>
         <stringProp name="WebDriverConfig.custom_capabilites"></stringProp>
-        <stringProp name="RemoteDriverConfig.general.selenium.grid.url">http://127.0.0.1:4444</stringProp>
+        <stringProp name="RemoteDriverConfig.general.selenium.grid.url">http://192.168.1.112:4444</stringProp>
         <stringProp name="RemoteDriverConfig.general.selenium.capability">CHROME</stringProp>
         <boolProp name="RemoteDriverConfig.general.selenium.file.detector">false</boolProp>
       </com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig>
