@@ -12,20 +12,15 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Tests') {
-            
-            steps {
-                sh 'mvn test'
-            }
-        }
+
 
         stage('JMeter Tests') {
             
             steps {
                 script {
-                    sh 'mvn clean compile'
-                    sh 'mvn jmeter:configure jmeter:gui'
-                    sh 'mvn jmeter:jmeter'
+                    sh 'mvn clean verify'
+                    //sh 'mvn jmeter:configure jmeter:gui'
+                    //sh 'mvn jmeter:jmeter'
                 }
             }
         }
