@@ -7,22 +7,19 @@ pipeline {
                     image 'maven:3.8.6-openjdk-11'
                 }
             }
+            stage('Install Dependencies') {
             steps {
                 sh 'mvn clean install -DskipTests'
             }
         }
 
-
-
-        stage('JMeter Tests') {
-            
+        stage('Run Selenium Tests') {
             steps {
-                script {
-                    sh 'mvn clean verify'
-                    //sh 'mvn jmeter:configure jmeter:gui'
-                    //sh 'mvn jmeter:jmeter'
-                }
+                sh 'mvn clean compile'
+                sh 'mvn jmeter:jmeter'
+                
             }
         }
     }
+}
 }
