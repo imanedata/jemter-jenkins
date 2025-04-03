@@ -29,11 +29,7 @@ pipeline {
         }
 
         stage('JMeter Tests') {
-            agent {
-                docker {
-                    image 'justb4/jmeter'
-                }
-            }
+            
             steps {
                 script {
                     sh 'mvn clean compile'

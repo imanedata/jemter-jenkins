@@ -1,2 +1,2 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1743682391723,532,Requête JDBC,200,OK,bdd 1-1,text,true,,171,0,1,1,null,531,0,514
+1743682820091,533,Requête JDBC,200,OK,bdd 1-1,text,true,,171,0,1,1,null,531,0,511
