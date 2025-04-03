@@ -173,7 +173,7 @@ $(document).ready(function() {
     });
 
     // Creates APDEX table
-    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.5, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Seuil de tolérance)", "F (Seuil de frustration)", "Libellé"], "items": [{"data": [0.5, 500, 1500, "Requête JDBC"], "isController": false}]}, function(index, item){
+    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [1.0, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Seuil de tolérance)", "F (Seuil de frustration)", "Libellé"], "items": [{"data": [1.0, 500, 1500, "Requête HTTP"], "isController": false}]}, function(index, item){
         switch(index){
             case 0:
                 item = item.toFixed(3);
@@ -187,7 +187,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 1, 0, 0.0, 1388.0, 1388, 1388, 1388.0, 1388.0, 1388.0, 1388.0, 0.7204610951008645, 0.12031137427953892, 0.0], "isController": false}, "titles": ["Libellé", "#Echantillons", "KO", "% Erreur", "Temps moyen", "Min", "Max", "Médiane", "90% centile", "95% centile", "99% centile", "Débit", "Reçues", "Envoyés"], "items": [{"data": ["Requête JDBC", 1, 0, 0.0, 1388.0, 1388, 1388, 1388.0, 1388.0, 1388.0, 1388.0, 0.7204610951008645, 0.12031137427953892, 0.0], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 1, 0, 0.0, 175.0, 175, 175, 175.0, 175.0, 175.0, 175.0, 5.714285714285714, 2.96875, 0.7254464285714286], "isController": false}, "titles": ["Libellé", "#Echantillons", "KO", "% Erreur", "Temps moyen", "Min", "Max", "Médiane", "90% centile", "95% centile", "99% centile", "Débit", "Reçues", "Envoyés"], "items": [{"data": ["Requête HTTP", 1, 0, 0.0, 175.0, 175, 175, 175.0, 175.0, 175.0, 175.0, 5.714285714285714, 2.96875, 0.7254464285714286], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:

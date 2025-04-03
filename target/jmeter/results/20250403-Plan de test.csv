@@ -1,2 +1,2 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1743685937983,1388,Requête JDBC,200,OK,bdd 1-1,text,true,,171,0,1,1,null,1387,0,1346
+1743686885750,175,Requête HTTP,200,OK,APi 1-1,text,true,,532,130,1,1,http://192.168.1.95:8000/departments,170,0,101
