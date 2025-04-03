@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    stages {
+        stage('jmeter Stage') {
+            agent {
+            docker {
+                image 'justb4/jmeter'
+            }
+        }
+    }
+    steps {
+            script {
+                sh'mvn clean compile'
+                sh'mvn jmeter:jmeter'
+            }
+    }
+}
+}

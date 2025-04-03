@@ -13,102 +13,108 @@
 
     <!-- Properties for the project -->
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-    </properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+	</properties>
 
-    <!-- Dependency Management for JUnit BOM -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.12.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>5.12.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <!-- Project Dependencies -->
-    <dependencies>
-        <dependency>
-            <groupId>kg.apc</groupId>
-            <artifactId>jmeter-plugins-webdriver</artifactId>
-            <version>4.13.0.2</version>
-        </dependency>
+	<dependencies>
+	<!-- <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>
+    <scope>runtime</scope>
+</dependency> -->
 
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.30.0</version>
-        </dependency>
+	<!-- <dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.3.0</version>
+</dependency>
+<dependency>
+			<groupId>kg.apc</groupId>
+			<artifactId>jmeter-plugins-webdriver</artifactId>
+			<version>4.13.0.2</version>
+		</dependency> -->
+	  <dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>4.30.0</version>
+	  </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			    <version>5.12.1</version>
 
-    <!-- Build Configuration -->
-    <build>
-        <plugins>
-           
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.3</version>
-            </plugin>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-            
-            <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>3.7.0</version>
-                <executions>
-                    <!-- Configure JMeter -->
-                    <execution>
-                        <id>configuration</id>
-                        <goals>
-                            <goal>configure</goal>
-                        </goals>
-                    </execution>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.2</version>
+			</plugin>
+      <plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.3</version>
+			</plugin>
+			<plugin>
+				<groupId>com.lazerycode.jmeter</groupId>
+				<artifactId>jmeter-maven-plugin</artifactId>
+				<version>3.7.0</version>
+				<executions>
+					<!-- Generate JMeter configuration -->
+					<execution>
+						<id>configuration</id>
+						<goals>
+							<goal>configure</goal>
+						</goals>
+					</execution>
+					<!-- Run JMeter tests -->
+					<execution>
+						<id>jmeter-tests</id>
+						<goals>
+							<goal>jmeter</goal>
+						</goals>
 
-                    <!-- Run JMeter Tests -->
-                    <execution>
-                        <id>jmeter-tests</id>
-                        <goals>
-                            <goal>jmeter</goal>
-                        </goals>
-                    </execution>
 
-                    <!-- Check JMeter Test Results -->
-                    <execution>
-                        <id>jmeter-check-results</id>
-                        <goals>
-                            <goal>results</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
+					</execution>
 
-                    <resultsDirectory>${project.build.directory}/jmeter/results</resultsDirectory>
+					<!-- Fail build on errors in test -->
+					<execution>
+						<id>jmeter-check-results</id>
+						<goals>
+							<goal>results</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<generateReports>true</generateReports>
+					
+					<jmeterExtensions>
+						<artifact>kg.apc:jmeter-plugins-webdriver:4.13.0.2</artifact>
+					</jmeterExtensions>
+					<testPlanLibraries>
+						<artifact>mysql:mysql-connector-java:8.0.30</artifact>
+					</testPlanLibraries>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-                    <generateReports>true</generateReports>
-
-                    <postTestPauseInSeconds>5</postTestPauseInSeconds>
-
-                    <resultFilesName>test-results</resultFilesName>
-
-                    <resultFileFormat>xml</resultFileFormat>
-
-                    
-                    <jmeterExtensions>
-                        <artifact>kg.apc:jmeter-plugins-webdriver:4.13.0.2</artifact>
-                    </jmeterExtensions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
