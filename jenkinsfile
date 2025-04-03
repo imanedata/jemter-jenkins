@@ -1,18 +1,39 @@
-pipeline{
-    agent any
+pipeline {
+    agent {
+        docker {
+            image 'maven:3.8.6-openjdk-11'
+        }
+    }
+
+    environment {
+        SELENIUM_GRID_URL = "http://192.168.1.112:4444"
+    }
+
     stages {
-        stage('jmeter Stage') {
+        stage('Install Dependencies') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+
+        stage('Run Selenium Tests') {
+            steps {
+                sh 'mvn test -Dselenium.grid.url=$SELENIUM_GRID_URL'
+            }
+        }
+
+        stage('JMeter Tests') {
             agent {
-            docker {
-                image 'justb4/jmeter'
+                docker {
+                    image 'justb4/jmeter'
+                }
+            }
+            steps {
+                script {
+                    sh 'mvn clean compile'
+                    sh 'mvn jmeter:jmeter'
+                }
             }
         }
     }
-    steps {
-            script {
-                sh'mvn clean compile'
-                sh'mvn jmeter:jmeter'
-            }
-    }
-}
 }
